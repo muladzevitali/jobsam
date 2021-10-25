@@ -5,6 +5,11 @@ from .models import ChatRoom, ChatMessage
 
 class ChatMessageTabularAdmin(admin.TabularInline):
     model = ChatMessage
+    extra = 0
+    ordering = ('-created_at',)
+
+    def has_change_permission(self, request, obj=None):
+        return False
 
 
 class ChatRoomAdmin(admin.ModelAdmin):
